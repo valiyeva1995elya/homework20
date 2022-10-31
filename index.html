@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin: 0 auto;
+        }
+        #box {
+            width: 404px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: #ccc;
+            margin: 15px auto;
+            padding: 2px;
+        }
+
+        #section {
+            width: 404px;
+            height: 200px;
+            margin: 15px auto;
+            border: 2px solid black;
+            padding: 2px;
+        }
+
+        #img1,#img2 {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="section" ondragenter="dragEnter(event)" ondrop="dragDrop(event)" ondragover="dragOver(event)">
+        <img src="./1556708032_1.jpg" id="img1" draggable="true" ondragstart="dragStart(event)" />
+        <img src="./dlya_dushi_35_13130628.jpg" id="img2" draggable="true" ondragstart="dragStart(event)" />
+    </div>
+    <div id="box" ondragenter="dragEnter(event)" ondrop="dragDrop(event)" ondragover="dragOver(event)"></div>
+
+    <script>
+        function dragStart(e) {
+            e.dataTransfer.setData("text/plain", e.target.id);
+        }
+        function dragEnter(e) {
+            event.preventDefault();
+            return true;
+        }
+
+        function dragDrop(e) {
+            var data = e.dataTransfer.getData("text/plain");
+            e.target.appendChild(document.getElementById(data));
+        }
+
+        function dragOver(e) {
+            event.preventDefault();
+        }
+
+    </script>
+</body>
+
+</html>
